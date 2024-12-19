@@ -6,16 +6,16 @@ This server project provides an API that developers can use to develop bots that
 
 Rules of the Game:
 
-A match is played between two bots and will consist of 100 rounds of Rock-Paper-Scissors
-Rock beats Scissors
-Scissors beats Paper
-Paper beats Rock
-A dynamite will defeat Rock, Paper, or Scissors played by the opponent.
-A water balloon will defeat a dynamite.
-Rock, Paper, and Scissors all beat water balloon.
-Each bot receives 10 sticks of dynamite to use during a match.
-All matching choices will be a tie with the same choice by opponent.
-Each bot may also throw a water balloon whenever it likes.
+- A match is played between two bots and will consist of 100 rounds of Rock-Paper-Scissors
+- Rock beats Scissors
+- Scissors beats Paper
+- Paper beats Rock
+- A dynamite will defeat Rock, Paper, or Scissors played by the opponent.
+- A water balloon will defeat a dynamite.
+- Rock, Paper, and Scissors all beat water balloon.
+- Each bot receives 10 sticks of dynamite to use during a match.
+- All matching choices will be a tie with the same choice by opponent.
+- Each bot may also throw a water balloon whenever it likes.
 
 ## Steps 
 
