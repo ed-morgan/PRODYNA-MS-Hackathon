@@ -28,21 +28,13 @@
 
 ### Create the Azure Container Apps & deploy
 
-1.  Install or update the Azure Container Apps extension for the CLI.
+1. We must update the `appsettings.json` to include the connection string for the database. We must update the following in the file:
 
-    ```shell
-    az extension add --name containerapp --upgrade
-    ```
-
-1.  Now that the current extension or module is installed, register the Microsoft.App and Microsoft.OperationalInsights namespaces.
-
-    ```shell
-    az provider register --namespace Microsoft.App
-    ```
-
-    ```shell
-    az provider register --namespace Microsoft.OperationalInsights
-    ```
+```
+  "ConnectionStrings": {
+    "DefaultConnection": "<CONNECTION STRING GOES HERE>"
+  },
+````
 
 1.  Create and deploy your first container app with the containerapp up command. This command will:
 

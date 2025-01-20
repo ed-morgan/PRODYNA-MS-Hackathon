@@ -2,33 +2,31 @@
 
 ### Create Azure SQL Server & Database
 
-1.  Create an Azure SQL Server via the Azure CLI (substituting your own values).
+1. Login to AZ CLI using the following command and the provided microsoft login credentials
 
-    ```shell
-    az sql server create -g <resource-group-name> -n <sql-server-name> -u <admin-username> -p <admin-password>
+    ```
+    az login
     ```
 
-1.  Optional: Add an IP firewall rule to restrict access to just your local IP & Azure (PowerShell)
+1.  Create an Azure SQL Server via the Azure CLI.
+
+    https://learn.microsoft.com/en-us/cli/azure/sql?view=azure-cli-latest
+
+1.  Add an IP firewall rule to restrict access to just your local IP & Azure (PowerShell). This command should provide your IP Address.
 
     ```powershell
     $myIP = $(Invoke-WebRequest -Uri "https://api.ipify.org").Content
-
-    az sql server firewall-rule create -g <resource-group-name> -s <sql-server-name> -n AllowMyIP --start-ip-address $myIP --end-ip-address $myIP
-
-    az sql server firewall-rule create -g <resource-group-name> -s <sql-server-name> -n AllowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
     ```
+
+    https://learn.microsoft.com/en-us/cli/azure/sql/server/firewall-rule?view=azure-cli-latest
 
 1.  Create an Azure SQL Database via the Azure CLI.
 
-    ```shell
-    az sql db create -g <resource-group-name> -s <sql-server-name> -n RockPaperScissorsBoom
-    ```
+    https://learn.microsoft.com/en-us/cli/azure/sql/db?view=azure-cli-latest
 
 1.  Run the following Azure CLI command to get the connection string for the Azure SQL database.
 
-    ```shell
-    az sql db show-connection-string -s <sql-server-name> -n RockPaperScissorsBoom -c ado.net
-    ```
+    https://learn.microsoft.com/en-us/cli/azure/sql/db?view=azure-cli-latest
 
 ### Modify the `docker-compose.yaml` file to point to the new Azure SQL database
 
@@ -37,18 +35,6 @@
 1.  Comment out the `rockpaperscissors-sql` service since the application will use an Azure SQL database.
 
 1.  Modify the `rockpaperscissors-server` service to use the Azure SQL database (notice that you modify the connection string & remove the dependency on the `rockpaperscissors-sql` service). Get the server FQDN & database name from the Azure portal.
-
-    ```yaml
-    rockpaperscissors-server:
-      build:
-        context: .
-        dockerfile: Dockerfile-Server
-      container_name: rockpaperscissors-server
-      environment:
-        "ConnectionStrings__DefaultConnection": "Server=tcp:<sql-server-name>.database.windows.net,1433;Initial Catalog=RockPaperScissorsBoom;Persist Security Info=False;User ID=<username>;Password=<password>;MultipleActiveResultSets=False;Encrypt=true;TrustServerCertificate=False;Connection Timeout=30;"
-      ports:
-        - "80:80"
-    ```
 
 ### Build & run the application
 
