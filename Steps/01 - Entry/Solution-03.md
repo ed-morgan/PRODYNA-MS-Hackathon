@@ -1,5 +1,15 @@
 ## Notes & Guidance
 
+### Update application with DB connection string
+
+1. We must update the `appsettings.json` to include the connection string for the database. We must update the following in the file:
+
+```
+  "ConnectionStrings": {
+    "DefaultConnection": "<CONNECTION STRING GOES HERE>"
+  },
+````
+
 ### Create the Azure Container Registry & push your local Docker image to it
 
 1.  Run the following Azure CLI to create the Azure Container Registry.
@@ -28,13 +38,6 @@
 
 ### Create the Azure Container Apps & deploy
 
-1. We must update the `appsettings.json` to include the connection string for the database. We must update the following in the file:
-
-```
-  "ConnectionStrings": {
-    "DefaultConnection": "<CONNECTION STRING GOES HERE>"
-  },
-````
 
 1.  Create and deploy your first container app with the containerapp up command. This command will:
 
