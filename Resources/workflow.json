@@ -1,0 +1,48 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "interval": 5,
+                    "frequency": "Minute",
+                    "timeZone": "UTC"
+                },
+                "evaluatedRecurrence": {
+                    "interval": 5,
+                    "frequency": "Minute",
+                    "timeZone": "UTC"
+                },
+                "type": "Recurrence"
+            }
+        },
+        "actions": {
+            "HTTP": {
+                "runAfter": {},
+                "type": "Http",
+                "inputs": {
+                    "uri": "https://[CHANGE-THIS-TO-YOUR-HOST]/api/rungame",
+                    "method": "POST"
+                },
+                "runtimeConfiguration": {
+                    "contentTransfer": {
+                        "transferMode": "Chunked"
+                    }
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {}
+        }
+    }
+}
