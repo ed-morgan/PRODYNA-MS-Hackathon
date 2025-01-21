@@ -71,13 +71,13 @@
 
 ### Add Application Insights to the app running in App Service
 
-1.  Run the following Azure CLI to add a new value to the App Service App Settings. This will be surfaced to the application as a new environment variable that will override the value specified in the `appsettings.json` file (note the double underscores in the nested resource name).
+1.  Run the following Azure CLI to add a new value to the App Service App Settings. This will be surfaced to the application as a new environment variable that will override the value specified in the `appsettings.json` file (note the double underscores in the nested resource name, and quotes around the value).
 
     ```shell
     az webapp config appsettings set --resource-group <resource-group-name> --name <app-service-name> --settings ApplicationInsights__ConnectionString="<app-insights-connection-string>"
     ```
 
-1.  Open the browser to https://\<app-service-name\>.azurewebsites.net and play a game.
+1.  Open the browser to https://<CONTAINER-APP-NAME>.<GENERATED-CODE>.westeurope.azurecontainerapps.io and play a game.
 
 1.  Open the Azure portal and navigate to your Application Insights resource.
 
